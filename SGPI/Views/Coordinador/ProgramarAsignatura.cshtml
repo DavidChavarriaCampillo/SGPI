@@ -1,0 +1,152 @@
+﻿
+@{
+    ViewData["Title"] = "ProgramarAsignatura";
+}
+
+<div class="row">
+    <h1 style="margin-top: 5%">Programar Asignaturas</h1>
+    <img src="~/img/tdea.png" style="margin-left:600px; width:100px; margin-top:20px" />
+</div>
+<br />
+<hr />
+
+<div class="row">
+
+    <form class="form-inline" style="justify-content:left">
+        <input class="form-control" type="search" placeholder="Documento" aria-label="Search">
+        <button class="btn btn-outline-secondary" type="submit">Search</button>
+    </form>
+    <form>
+        <select name="color" id="color" class="btn btn-outline-darck" style="border:solid 1px; margin-left: 150px">
+            <option value="#">Programa</option>
+            <option value="r">ESP.TI</option>
+            <option value="a">MG.TI</option>
+            <option value="v">MGRMA</option>
+        </select>
+    </form>
+
+    <form style="margin-left:150px">
+        <label for="start">Semestre</label>
+        <input type="date" id="start" name="trip-start"
+               value="2018-07-22"
+               min="2018-01-01" max="2018-12-31">
+    </form>
+
+    <form>
+        <button type="submit" class="btn btn-outline-dark" asp-controller="Coordinador" asp-action="MenuCoordinador" style="margin-left: 150px;">Volver</button>
+    </form>
+
+</div>
+
+<form class="row" style="margin-top:50px;margin-left:300px">
+    <div>
+        <button type="submit" class="btn btn-outline-dark" style="margin-left: 150px;">Añadir</button>
+        <button type="submit" class="btn btn-outline-dark" style="margin-left: 100px;">Guardar</button>
+    </div>
+</form>
+
+
+
+<div class="row" style="margin-top: 50px">
+
+
+    <table class="table table-responsive" style="margin-left: 120px; border-color:black;">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Fecha incio</th>
+                <th scope="col">Fecha fin</th>
+                <th scope="col">Bloque</th>
+                <th scope="col">Sala</th>
+                <th scope="col">Modulo</th>
+                <th scope="col">Codigo asignatura</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>
+                    <input type="date" id="start" name="trip-start"
+                           value="2018-07-22"
+                           min="2018-01-01" max="2018-12-31">
+                </td>
+                <td>
+                    <input type="date" id="start" name="trip-start"
+                           value="2018-07-22"
+                           min="2018-01-01" max="2018-12-31">
+                </td>
+                <td>
+                    <input type="text" style="width:100px"/>
+                </td>
+                <td>
+                    <input type="text" style="width:100px"/>
+                </td>
+                <td>
+                    <select name="color" id="color" class="btn btn-outline-darck" style="border:solid 1px;">
+                        <option value="#">Programa</option>
+                        <option value="r">ESP.TI</option>
+                        <option value="a">MG.TI</option>
+                        <option value="v">MGRMA</option>
+                    </select>
+                </td>
+                <td>15dfd7866as1</td>
+            </tr>
+            <tr>
+                <th scope="row">1</th>
+                <td>
+                    <input type="date" id="start" name="trip-start"
+                           value="2018-07-22"
+                           min="2018-01-01" max="2018-12-31">
+                </td>
+                <td>
+                    <input type="date" id="start" name="trip-start"
+                           value="2018-07-22"
+                           min="2018-01-01" max="2018-12-31">
+                </td>
+                <td>
+                    <input type="text" style="width:100px" />
+                </td>
+                <td>
+                    <input type="text" style="width:100px"/>
+                </td>
+                <td>
+                    <select name="color" id="color" class="btn btn-outline-darck" style="border:solid 1px;">
+                        <option value="#">Programa</option>
+                        <option value="r">ESP.TI</option>
+                        <option value="a">MG.TI</option>
+                        <option value="v">MGRMA</option>
+                    </select>
+                </td>
+                <td>15dfd7866as1</td>
+            </tr>
+            <tr>
+                <th scope="row">1</th>
+                <td>
+                    <input type="date" id="start" name="trip-start"
+                           value="2018-07-22"
+                           min="2018-01-01" max="2018-12-31">
+                </td>
+                <td>
+                    <input type="date" id="start" name="trip-start"
+                           value="2018-07-22"
+                           min="2018-01-01" max="2018-12-31">
+                </td>
+                <td>
+                    <input type="text" style="width:100px"/>
+                </td>
+                <td>
+                    <input type="text" style="width:100px"/>
+                </td>
+                <td>
+                    <select name="color" id="color" class="btn btn-outline-darck" style="border:solid 1px;">
+                        <option value="#">Programa</option>
+                        <option value="r">ESP.TI</option>
+                        <option value="a">MG.TI</option>
+                        <option value="v">MGRMA</option>
+                    </select>
+                </td>
+                <td>15dfd7866as1</td>
+            </tr>
+    </table>
+</div>
+

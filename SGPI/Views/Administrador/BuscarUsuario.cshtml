@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewData["Title"] = "BuscarUsuario";
+}
+
+@*style="background-image:src(../../wwwroot/img/tdea.png); background-size:60%; height: 50%; background-position: center; background-repeat: no-repeat; background-attachment: fixed;">*@
+<body>
+    <div class="row">
+        <h1 style="margin-top: 5%">Buscar Usuario</h1>
+        <img src="~/img/tdea.png" style="margin-left:750px; width:100px; margin-top:20px" />
+    </div>
+    <br />
+    <hr style="border-color:black"/>
+    <div class="row">
+        <form style="margin-left:10px">
+            <button class="btn btn-outline-dark" asp-controller="Administrador" asp-action="MenuAdministrador" type="submit">Atras</button>
+        </form>
+        <form class="form-inline" style="margin-left:770px">
+            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-dark" type="submit">Search</button>
+        </form>
+    </div>
+    <br />
+    <table class="table table-responsive" style="margin-left: 120px; border-color:black;">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Tipo Documento</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Programa</th>
+                <th scope="col">Rol</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>Alvares</td>
+                <td>Logica</td>
+                <td>Administrador</td>
+                <td>08/12/1999</td>
+                <td>
+                    <button type="submit" class="btn btn-outline-dark">Editar</button>
+                    <button type="submit" class="btn btn-outline-dark">Eliminar</button>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>Alvares</td>
+                <td>Logica</td>
+                <td>Administrador</td>
+                <td>08/12/1999</td>
+                <td>
+                    <button type="submit" class="btn btn-outline-dark">Editar</button>
+                    <button type="submit" class="btn btn-outline-dark">Eliminar</button>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>Alvares</td>
+                <td>Logica</td>
+                <td>Administrador</td>
+                <td>08/12/1999</td>
+                <td>
+                    <button type="submit" class="btn btn-outline-dark">Editar</button>
+                    <button type="submit" class="btn btn-outline-dark">Eliminar</button>
+                </td>
+            </tr>
+</table>
+</body>
