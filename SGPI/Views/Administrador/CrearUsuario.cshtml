@@ -1,4 +1,4 @@
-﻿
+﻿@model SGPI.Models.Usuario
 @{
     ViewData["Title"] = "CrearUsuario";
 }
@@ -11,11 +11,23 @@
 <hr style="border-color:black" />
 <div class="container" style="margin-top:65px">
     <div class="row">
-        <form>
+        <form method="post">
             <div>
-                <select name="tipo" id="tipo" class="btn btn-outline-darck" style="border:solid 2px; margin-left: 100px">
+                @*<div class="btn btn-outline-darck" style="border:solid 2px; margin-left: 100px">
+                        @Html.DropDownList("IdTipoDoc", new SelectList(ViewBag.tipodoc, "IdTipoDoc", "ValTipoDoc"), "Documento")
+                    </div>
+                    <div class="btn btn-outline-darck" style="border:solid 2px; margin-left: 100px">
+                        @Html.DropDownList("IdPrograma", new SelectList(ViewBag.programa, "IdPrograma", "ValPrograma"), "Programa")
+                    </div>
+                    <div class="btn btn-outline-darck" style="border:solid 2px; margin-left: 100px">
+                        @Html.DropDownList("IdRol", new SelectList(ViewBag.rol, "IdRol", "ValRol"), "Rol")
+                    </div>
+                    <div class="btn btn-outline-darck" style="border:solid 2px; margin-left: 100px">
+                        @Html.DropDownList("IdGenero", new SelectList(ViewBag.genero, "IdGenero", "ValGenero"), "Genero")
+                    </div>*@
+                <select asp-for="Documento" id="tipo" class="btn btn-outline-darck" style="border:solid 2px; margin-left: 100px">
                     <option value="#">Tipo</option>
-                    <option value="r">Cedula</option>
+                    <option value="i">cedula</option>
                     <option value="a">T.I</option>
                     <option value="v">Pasaporte</option>
                     <option value="v">C.Extrangero</option>
@@ -41,30 +53,30 @@
             </div>
             <div class="row" style="margin-top:100px">
                 <div class="form-group" style="margin-left:120px">
-                    <label for="ndocumento" style=""><b>N.Documento</b></label>
-                    <input type="number" class="form-control" style="border-color:black; border-width:2px; width:200px" id="ndocumento" placeholder="Ej. 11145687">
+                    <label asp-for="Documento" class="control-label" style=""><b>N.Documento</b></label>
+                    <input asp-for="Documento" type="number" class="form-control" style="border-color:black; border-width:2px; width:200px" id="ndocumento" placeholder="Ej. 11145687">
                 </div>
                 <div class="form-group" style="margin-left:115px">
-                    <label for="nombre" style=""><b>nombre</b></label>
-                    <input type="text" class="form-control" style="border-color:black; border-width:2px; width:200px" id="nombre" placeholder="Ej. Juan">
+                    <label asp-for="Nombre" class="control-label" style=""><b>nombre</b></label>
+                    <input asp-for="Nombre" type="text" class="form-control" style="border-color:black; border-width:2px; width:200px" id="nombre" placeholder="Ej. Juan">
                 </div>
                 <div class="form-group" style="margin-left:115px">
-                    <label for="apellido" style=""><b>Apellido</b></label>
-                    <input type="text" class="form-control" style="border-color:black; border-width:2px; width:200px" id="apellido" placeholder="Ej. Perez">
+                    <label asp-for="Apellido" class="control-label" style=""><b>Apellido</b></label>
+                    <input asp-for="Apellido" type="text" class="form-control" style="border-color:black; border-width:2px; width:200px" id="apellido" placeholder="Ej. Perez">
                 </div>
             </div>
             <div class="row" style="margin-top:100px">
                 <div class="form-group" style="margin-left:120px">
-                    <label for="email" style=""><b>Correo</b></label>
-                    <input type="email" class="form-control" style="border-color:black; border-width:2px; width:200px" id="email" placeholder="Ej. zapata@juan.com">
+                    <label asp-for="Email" class="control-label" style=""><b>Correo</b></label>
+                    <input asp-for="Email" type="email" class="form-control" style="border-color:black; border-width:2px; width:200px" id="email" placeholder="Ej. zapata@juan.com">
                 </div>
                 <div class="form-group" style="margin-left:115px">
-                    <label for="direccion" style=""><b>Direccion</b></label>
-                    <input type="text" class="form-control" style="border-color:black; border-width:2px; width:200px" id="direccion" placeholder="Ej. Cr12#23c45">
+                    <label asp-for="Direccion" class="control-label" style=""><b>Direccion</b></label>
+                    <input asp-for="Direccion" type="text" class="form-control" style="border-color:black; border-width:2px; width:200px" id="direccion" placeholder="Ej. Cr12#23c45">
                 </div>
                 <div class="form-group" style="margin-left:115px">
-                    <label for="telefono" style=""><b>Telefono</b></label>
-                    <input type="number" class="form-control" style="border-color:black; border-width:2px; width:200px" id="telefono" placeholder="Ej. 857687">
+                    <label asp-for="Telefono" class="control-label" style=""><b>Telefono</b></label>
+                    <input asp-for="Telefono" type="number" class="form-control" style="border-color:black; border-width:2px; width:200px" id="telefono" placeholder="Ej. 857687">
                 </div>
             </div>
             <div style="margin-left:330px">

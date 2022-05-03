@@ -1,4 +1,4 @@
-﻿
+﻿@model SGPI.Models.Usuario
 @{
     ViewData["Title"] = "BuscarUsuario";
 }
@@ -37,16 +37,17 @@
         <tbody>
             <tr>
                 <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>Alvares</td>
-                <td>Logica</td>
-                <td>Administrador</td>
-                <td>08/12/1999</td>
-                <td>
+                <td>@Html.DisplayFor(modelItem => modelItem.Documento)</td>
+                <td>@Html.DisplayFor(modelItem => modelItem.Nombre)</td>
+                <td>@Html.DisplayFor(modelItem => modelItem.Apellido)</td>
+                <td>@Html.DisplayFor(modelItem => modelItem.ProgramaUsuarios)</td>
+                <td>@Html.DisplayFor(modelItem => modelItem.IdRol)</td>
+                <td>@Html.DisplayFor(modelItem => modelItem.Direccion)</td>
+                @*<td>
                     <button type="submit" class="btn btn-outline-dark"><img src="~/img/editar.png" style="width:25px"/></button>
                     <button type="submit" class="btn btn-outline-dark"><img src="~/img/eliminar.png" style="width:25px"/></button>
-                </td>
+                </td>*@
+                @*<td>@Html.ActionLink("Edit", "Edit", new { IdUsuario = Model.IdUsuario })</td>*@
             </tr>
             <tr>
                 <th scope="row">1</th>

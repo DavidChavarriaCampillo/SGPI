@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SGPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,16 @@ namespace SGPI.Controllers
 {
     public class AdministradorController : Controller
     {
+
+        //SGPDBContext context;
+
+        /*public AdministradorController(SGPDBContext contexto)
+        {
+
+            context = contexto;
+
+        }*/
+
         // GET: AdministradorController
         public ActionResult MenuAdministrador()
         {
@@ -16,14 +27,41 @@ namespace SGPI.Controllers
         }
 
         // GET: AdministradorController/Details/5
-        public ActionResult CrearUsuario()
+        public IActionResult CrearUsuario()
+        {
+
+            SGPDBContext context = new SGPDBContext();
+            ViewBag.tipodoc = context.Documentos.ToList();
+            ViewBag.programa = context.Programas.ToList();
+            ViewBag.rol = context.Rols.ToList();
+            ViewBag.genero = context.Generos.ToList();
+            return View();
+
+        }
+
+        // POST: AdministradorController/Create
+        [HttpPost]
+        public IActionResult CrearUsuario(Usuario user)
+        {
+
+            SGPDBContext context = new SGPDBContext();
+            context.Add(user);
+            context.SaveChanges();
+            return View();
+
+        }
+
+        // GET: AdministradorController/BuscarUsuario
+        public IActionResult BuscarUsuario()
         {
             return View();
         }
 
-        // GET: AdministradorController/BuscarUsuario
-        public ActionResult BuscarUsuario()
+        [HttpPost]
+        public IActionResult BuscarUsuario(Usuario user)
         {
+
+            //var listaUsuarios = context.Usuarios.
             return View();
         }
 
