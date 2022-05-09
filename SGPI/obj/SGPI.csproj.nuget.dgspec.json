@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\SrTonyChop\\Desktop\\Proyectos\\SGPI\\SGPI\\SGPI.csproj": {}
+    "C:\\Users\\SrTonyChop\\Desktop\\SGPI\\SGPI\\SGPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\SrTonyChop\\Desktop\\Proyectos\\SGPI\\SGPI\\SGPI.csproj": {
+    "C:\\Users\\SrTonyChop\\Desktop\\SGPI\\SGPI\\SGPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\SrTonyChop\\Desktop\\Proyectos\\SGPI\\SGPI\\SGPI.csproj",
+        "projectUniqueName": "C:\\Users\\SrTonyChop\\Desktop\\SGPI\\SGPI\\SGPI.csproj",
         "projectName": "SGPI",
-        "projectPath": "C:\\Users\\SrTonyChop\\Desktop\\Proyectos\\SGPI\\SGPI\\SGPI.csproj",
+        "projectPath": "C:\\Users\\SrTonyChop\\Desktop\\SGPI\\SGPI\\SGPI.csproj",
         "packagesPath": "C:\\Users\\SrTonyChop\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\SrTonyChop\\Desktop\\Proyectos\\SGPI\\SGPI\\obj\\",
+        "outputPath": "C:\\Users\\SrTonyChop\\Desktop\\SGPI\\SGPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

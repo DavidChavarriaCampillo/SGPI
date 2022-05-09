@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tL3ZM2OcTVY4euZzFeInSwwGnrChPHGPvoe40bqu/rLoDerMeD5AI3DoVyiblUD1J6e/1HOk6tnH/aDz3+VBGw==",
+  "dgSpecHash": "acmU8W5Zb9TUcYWyo6zPD0R2azsuBPVn2zg0wrrcKpz+lRhmfB5otqAFwCNkSNhlT27MTL2Hmpy7mh5SOCLPog==",
   "success": true,
-  "projectFilePath": "C:\\Users\\SrTonyChop\\Desktop\\Proyectos\\SGPI\\SGPI\\SGPI.csproj",
+  "projectFilePath": "C:\\Users\\SrTonyChop\\Desktop\\SGPI\\SGPI\\SGPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\SrTonyChop\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\SrTonyChop\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

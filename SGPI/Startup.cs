@@ -27,8 +27,8 @@ namespace SGPI
         {
             services.AddControllersWithViews();
 
-            /*string connectionString = ConfigurationExtensions.GetConnectionString(this.Configuration, "DefaultConnectionString");
-            services.AddDbContext<SGPDBContext>(options => options.UseSqlServer(connectionString));*/
+            string connectionString = ConfigurationExtensions.GetConnectionString(this.Configuration, "DefaultConnectionString");
+            services.AddDbContext<SGPDBContext>(options => options.UseSqlServer(connectionString));
 
         }
 

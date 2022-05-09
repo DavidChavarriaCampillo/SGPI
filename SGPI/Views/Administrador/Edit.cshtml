@@ -1,10 +1,10 @@
-﻿@model SGPI.Models.Usuario
+﻿@model SGPI.Models.Usuario;
 @{
-    ViewData["Title"] = "CrearUsuario";
+    ViewData["Title"] = "Edit";
 }
 
 <div class="row">
-    <h1 style="margin-top: 5%">Crear Usuario</h1>
+    <h1 style="margin-top: 5%">Editar Usuario</h1>
     <img src="~/img/tdea.png" style="margin-left:750px; width:100px; margin-top:20px" />
 </div>
 <br />
@@ -26,30 +26,30 @@
                     @Html.DropDownList("IdGenero", new SelectList(ViewBag.genero, "IdGenero", "ValGenero"), "Genero")
                 </div>
                 @*<select asp-for="Documento" id="tipo" class="btn btn-outline-darck" style="border:solid 2px; margin-left: 100px">
-                    <option value="#">Tipo</option>
-                    <option value="i">cedula</option>
-                    <option value="a">T.I</option>
-                    <option value="v">Pasaporte</option>
-                    <option value="v">C.Extrangero</option>
-                </select>
-                <select name="programa" id="programa" class="btn btn-outline-darck" style="border:solid 2px; margin-left: 100px">
-                    <option value="#">Programa</option>
-                    <option value="r">ESP.TI</option>
-                    <option value="a">MG.TI</option>
-                    <option value="v">MGRMA</option>
-                </select>
-                <select name="tiporol" id="tiporol" class="btn btn-outline-darck" style="border:solid 2px; margin-left: 100px">
-                    <option value="#">Tipo de rol</option>
-                    <option value="r">Administrador</option>
-                    <option value="a">Coordinador</option>
-                    <option value="v">Estudiante</option>
-                </select>
-                <select name="genero" id="genero" class="btn btn-outline-darck" style="border:solid 2px; margin-left: 100px">
-                    <option value="#">Genero</option>
-                    <option value="r">Masculino</option>
-                    <option value="a">Femenino</option>
-                    <option value="v">Otro</option>
-                </select>*@
+                        <option value="#">Tipo</option>
+                        <option value="i">cedula</option>
+                        <option value="a">T.I</option>
+                        <option value="v">Pasaporte</option>
+                        <option value="v">C.Extrangero</option>
+                    </select>
+                    <select name="programa" id="programa" class="btn btn-outline-darck" style="border:solid 2px; margin-left: 100px">
+                        <option value="#">Programa</option>
+                        <option value="r">ESP.TI</option>
+                        <option value="a">MG.TI</option>
+                        <option value="v">MGRMA</option>
+                    </select>
+                    <select name="tiporol" id="tiporol" class="btn btn-outline-darck" style="border:solid 2px; margin-left: 100px">
+                        <option value="#">Tipo de rol</option>
+                        <option value="r">Administrador</option>
+                        <option value="a">Coordinador</option>
+                        <option value="v">Estudiante</option>
+                    </select>
+                    <select name="genero" id="genero" class="btn btn-outline-darck" style="border:solid 2px; margin-left: 100px">
+                        <option value="#">Genero</option>
+                        <option value="r">Masculino</option>
+                        <option value="a">Femenino</option>
+                        <option value="v">Otro</option>
+                    </select>*@
             </div>
             <div class="row" style="margin-top:100px">
                 <div class="form-group" style="margin-left:120px">
@@ -81,9 +81,10 @@
             </div>
             <div style="margin-left:330px">
                 <button type="submit" class="btn btn-outline-dark" style="margin-left: 80px; margin-top: 35px; margin-bottom: 30px;">Enviar</button>
-                <button type="submit" class="btn btn-outline-dark" asp-area="" asp-controller="Administrador" asp-action="MenuAdministrador" style="margin-left: 80px; margin-top: 35px; margin-bottom: 30px;">Cancelar</button>
+                <button type="submit" class="btn btn-outline-dark" asp-area="" asp-controller="Administrador" asp-action="BsucarUsuario" style="margin-left: 80px; margin-top: 35px; margin-bottom: 30px;">Cancelar</button>
             </div>
         </form>
     </div>
 </div>
+
 

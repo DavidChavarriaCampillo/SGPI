@@ -11,14 +11,14 @@ namespace SGPI.Controllers
     public class AdministradorController : Controller
     {
 
-        //SGPDBContext context;
+        SGPDBContext context;
 
-        /*public AdministradorController(SGPDBContext contexto)
+        public AdministradorController(SGPDBContext contexto)
         {
 
             context = contexto;
 
-        }*/
+        }
 
         // GET: AdministradorController
         public ActionResult MenuAdministrador()
@@ -30,7 +30,6 @@ namespace SGPI.Controllers
         public IActionResult CrearUsuario()
         {
 
-            SGPDBContext context = new SGPDBContext();
             ViewBag.tipodoc = context.Documentos.ToList();
             ViewBag.programa = context.Programas.ToList();
             ViewBag.rol = context.Rols.ToList();
@@ -44,9 +43,12 @@ namespace SGPI.Controllers
         public IActionResult CrearUsuario(Usuario user)
         {
 
-            SGPDBContext context = new SGPDBContext();
             context.Add(user);
             context.SaveChanges();
+            ViewBag.tipodoc = context.Documentos.ToList();
+            ViewBag.programa = context.Programas.ToList();
+            ViewBag.rol = context.Rols.ToList();
+            ViewBag.genero = context.Generos.ToList();
             return View();
 
         }
@@ -54,15 +56,29 @@ namespace SGPI.Controllers
         // GET: AdministradorController/BuscarUsuario
         public IActionResult BuscarUsuario()
         {
-            return View();
+            Usuario user = new Usuario();
+            //var listaUsuarios = context.Usuarios.;
+            /*if(listaUsuarios != null)
+            {
+                return View(listaUsuarios.ToList().SingleOrDefault());
+            }*/
+            return View(user);
         }
 
         [HttpPost]
         public IActionResult BuscarUsuario(Usuario user)
         {
 
-            //var listaUsuarios = context.Usuarios.
-            return View();
+            var listaUsuarios = context.Usuarios.Where(u => u.Documento.Contains(user.Documento)).ToList();
+            if(listaUsuarios != null)
+            {
+                return View(listaUsuarios.SingleOrDefault());
+            }
+            else
+            {
+                return View();
+            }
+            
         }
 
         // GET: AdministradorController/Informes
@@ -87,45 +103,56 @@ namespace SGPI.Controllers
         }
 
         // GET: AdministradorController/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit()
         {
+            ViewBag.tipodoc = context.Documentos.ToList();
+            ViewBag.programa = context.Programas.ToList();
+            ViewBag.rol = context.Rols.ToList();
+            ViewBag.genero = context.Generos.ToList();
             return View();
         }
 
         // POST: AdministradorController/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public IActionResult Edit(Usuario user)
         {
-            try
+            Usuario usuario = context.Usuarios.Find(user.IdUsuario);
+            if (usuario == null)
+                return ViewBag.mensaje = "Eror al editar usuario";
+            else
             {
-                return RedirectToAction(nameof(Index));
+                context.Update(usuario);
+                context.SaveChanges();
+                ViewBag.tipodoc = context.Documentos.ToList();
+                ViewBag.programa = context.Programas.ToList();
+                ViewBag.rol = context.Rols.ToList();
+                ViewBag.genero = context.Generos.ToList();
             }
-            catch
-            {
-                return View();
-            }
+
+            return RedirectToAction("BuscarUsuario");
         }
 
         // GET: AdministradorController/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete()
         {
-            return View();
+            return RedirectToAction("BuscarUsuario");
         }
 
         // POST: AdministradorController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(Usuario user)
         {
-            try
+            Usuario usuario = context.Usuarios.Find(user.IdUsuario);
+            if (usuario == null)
+                return ViewBag.mensaje = "Eror al editar usuario";
+            else
             {
-                return RedirectToAction(nameof(Index));
+                context.Remove(usuario);
+                context.SaveChanges();
             }
-            catch
-            {
-                return View();
-            }
+
+            return RedirectToAction("BuscarUsuario");
         }
     }
 }
