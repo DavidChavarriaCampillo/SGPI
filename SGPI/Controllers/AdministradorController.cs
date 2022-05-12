@@ -57,20 +57,50 @@ namespace SGPI.Controllers
         public IActionResult BuscarUsuario()
         {
             Usuario user = new Usuario();
-            //var listaUsuarios = context.Usuarios.;
-            /*if(listaUsuarios != null)
+            /*var listaUsuarios = context.Usuarios.ToList();
+            if (listaUsuarios != null)
             {
-                return View(listaUsuarios.ToList().SingleOrDefault());
+                return View(listaUsuarios.SingleOrDefault());
             }*/
             return View(user);
+
         }
 
         [HttpPost]
         public IActionResult BuscarUsuario(Usuario user)
         {
 
+            /*if(user != null)
+            {
+
+                List<Usuario> listaUsuarios;
+                user = context.Usuarios.ToList();
+                foreach (Usuario us in user)
+                {
+
+                    listaUsuarios = context.Usuarios.Where(u => u.Documento.Contains(us.Documento)).ToList();
+                    if (listaUsuarios != null)
+                    {
+                        return View(listaUsuarios.SingleOrDefault());
+                    }
+                    else
+                    {
+                        return View();
+                    }
+
+                }
+
+            }
+            else
+            {
+
+                
+
+            }
+            return View*/
+
             var listaUsuarios = context.Usuarios.Where(u => u.Documento.Contains(user.Documento)).ToList();
-            if(listaUsuarios != null)
+            if (listaUsuarios != null)
             {
                 return View(listaUsuarios.SingleOrDefault());
             }
@@ -78,7 +108,7 @@ namespace SGPI.Controllers
             {
                 return View();
             }
-            
+
         }
 
         // GET: AdministradorController/Informes
@@ -116,12 +146,13 @@ namespace SGPI.Controllers
         [HttpPost]
         public IActionResult Edit(Usuario user)
         {
-            Usuario usuario = context.Usuarios.Find(user.IdUsuario);
+            //Usuario usuario = context.Usuarios.Find(user.IdUsuario);
+            Usuario usuario = user;
             if (usuario == null)
                 return ViewBag.mensaje = "Eror al editar usuario";
             else
             {
-                context.Update(usuario);
+                context.Update(user);
                 context.SaveChanges();
                 ViewBag.tipodoc = context.Documentos.ToList();
                 ViewBag.programa = context.Programas.ToList();
@@ -133,26 +164,38 @@ namespace SGPI.Controllers
         }
 
         // GET: AdministradorController/Delete/5
-        public ActionResult Delete()
-        {
-            return RedirectToAction("BuscarUsuario");
-        }
-
-        // POST: AdministradorController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Delete(Usuario user)
         {
-            Usuario usuario = context.Usuarios.Find(user.IdUsuario);
+
+            Usuario usuario = user;
             if (usuario == null)
                 return ViewBag.mensaje = "Eror al editar usuario";
             else
             {
-                context.Remove(usuario);
+                context.Remove(user);
                 context.SaveChanges();
             }
 
             return RedirectToAction("BuscarUsuario");
+
         }
+
+        // POST: AdministradorController/Delete/5
+        /*[HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(Usuario user)
+        {
+            //Usuario usuario = context.Usuarios.Find(user.IdUsuario);
+            Usuario usuario = user;
+            if (usuario == null)
+                return ViewBag.mensaje = "Eror al editar usuario";
+            else
+            {
+                context.Remove(user);
+                context.SaveChanges();
+            }
+
+            return RedirectToAction("BuscarUsuario");
+        }*/
     }
 }

@@ -1,4 +1,4 @@
-﻿
+﻿@model SGPI.Models.Usuario 
 @{
     ViewData["Title"] = "ConsultarEstudiante";
 }
@@ -12,18 +12,19 @@
 
 <div class="row">
 
-    <form class="form-inline" style="justify-content:left">
-        <input class="form-control" type="search" placeholder="Documento" aria-label="Search">
-        <button class="btn btn-outline-secondary" type="submit">Search</button>
+    <form method="post" class="form-inline" style="justify-content:left">
+        <input asp-for="Documento" class="form-control" type="search" placeholder="Documento" aria-label="Search">
+        <input asp-for="Documento" class="btn btn-outline-secondary" type="submit" value="Buscar">
+        @Html.DropDownList("IdPrograma", new SelectList(ViewBag.programa, "IdPrograma", "ValPrograma"), "Programa")
     </form>
-    <form>
+    <!--form>
         <select name="color" id="color" class="btn btn-outline-darck" style="border:solid 1px; margin-left: 200px">
             <option value="#">Programa</option>
             <option value="r">ESP.TI</option>
             <option value="a">MG.TI</option>
             <option value="v">MGRMA</option>
         </select>
-    </form>
+    </!--form-->
 
     <form>
         <button type="submit" class="btn btn-outline-dark" asp-controller="Coordinador" asp-action="MenuCoordinador" style="margin-left: 300px;">Volver</button>
@@ -52,15 +53,15 @@
         </thead>
         <tbody>
             <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>12345487</td>
-                <td>ESP.TI</td>
-                <td>fdgdfgfd@fgdfgd.com</td>
-                <td>454875</td>
-                <td>120000</td>
-                <td>08/12/1999</td>
-                <td>Activo</td>
+                <th scope="row">@Html.DisplayFor(modelItem => modelItem.IdUsuario)</th>
+                <td>@Html.DisplayFor(modelItem => modelItem.Nombre)</td>
+                <td>@Html.DisplayFor(modelItem => modelItem.Documento)</td>
+                <td>@Html.DisplayFor(modelItem => modelItem.IdPrograma)</td>
+                <td>@Html.DisplayFor(modelItem => modelItem.Email)</td>
+                <td>@Html.DisplayFor(modelItem => modelItem.Telefono)</td>
+                <td disable="true">@Html.ViewBag.genero</td>
+                <td>@Html.DisplayFor(modelItem => modelItem.Telefono)</td>
+                <td>@Html.DisplayFor(modelItem => modelItem.Telefono)</td>
                 <td>
                     <button type="submit" class="btn btn-outline-dark"><img src="~/img/ojo.png" width="25" height="25" /></button>
                 </td>

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SGPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,16 @@ namespace SGPI.Controllers
 {
     public class CoordinadorController : Controller
     {
+
+        SGPDBContext context;
+
+        public CoordinadorController(SGPDBContext contexto)
+        {
+
+            context = contexto;
+
+        }
+
         // GET: CoordinadorController
         public ActionResult MenuCoordinador()
         {
@@ -16,9 +27,30 @@ namespace SGPI.Controllers
         }
 
         // GET: CoordinadorController/Details/5
-        public ActionResult ConsultarEstudiante()
+        public IActionResult ConsultarEstudiante()
         {
-            return View();
+            Usuario user = new Usuario();
+            ViewBag.programa = context.Programas.ToList();
+            return View(user);
+        }
+
+        [HttpPost]
+        public IActionResult ConsultarEstudiante(Usuario user)
+        {
+
+            var listaEstudiantes = context.Usuarios.Where(u => u.Documento.Contains(user.Documento) && 
+            u.IdRol==3 && u.IdPrograma==user.IdPrograma).ToList();
+            ViewBag.programa = context.Programas.ToList();
+            ViewBag.genero = context.Generos.Find(listaEstudiantes[0].IdGenero).ToString();
+            if (listaEstudiantes != null)
+            {
+                return View(listaEstudiantes.SingleOrDefault());
+            }
+            else
+            {
+                return View();
+            }
+
         }
 
         // GET: CoordinadorController/Create
