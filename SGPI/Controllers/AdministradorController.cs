@@ -10,14 +10,11 @@ namespace SGPI.Controllers
 {
     public class AdministradorController : Controller
     {
-
         SGPDBContext context;
 
         public AdministradorController(SGPDBContext contexto)
         {
-
             context = contexto;
-
         }
 
         // GET: AdministradorController
@@ -29,20 +26,17 @@ namespace SGPI.Controllers
         // GET: AdministradorController/Details/5
         public IActionResult CrearUsuario()
         {
-
             ViewBag.tipodoc = context.Documentos.ToList();
             ViewBag.programa = context.Programas.ToList();
             ViewBag.rol = context.Rols.ToList();
             ViewBag.genero = context.Generos.ToList();
             return View();
-
         }
 
         // POST: AdministradorController/Create
         [HttpPost]
         public IActionResult CrearUsuario(Usuario user)
         {
-
             context.Add(user);
             context.SaveChanges();
             ViewBag.tipodoc = context.Documentos.ToList();
@@ -50,65 +44,48 @@ namespace SGPI.Controllers
             ViewBag.rol = context.Rols.ToList();
             ViewBag.genero = context.Generos.ToList();
             return View();
-
         }
 
         // GET: AdministradorController/BuscarUsuario
         public IActionResult BuscarUsuario()
         {
-            Usuario user = new Usuario();
-            /*var listaUsuarios = context.Usuarios.ToList();
-            if (listaUsuarios != null)
+            var listaUsuarios = context.Usuarios.ToList();
+            var listaprogram = context.Programas.ToList();
+            List<string> listaprogramas = new List<string>();
+            foreach (var user in listaUsuarios)
             {
-                return View(listaUsuarios.SingleOrDefault());
-            }*/
-            return View(user);
-
+                if(user.IdPrograma != null)
+                {
+                    foreach (var programa in listaprogram)
+                    {
+                        if (user.IdPrograma == programa.IdPrograma)
+                        {
+                            listaprogramas.Add(programa.ValPrograma);
+                        }
+                    }
+                }
+                else
+                {
+                    listaprogramas.Add("no programa");
+                }
+                
+            }
+            ViewBag.programa = listaprogramas;
+            return View(listaUsuarios);
         }
 
         [HttpPost]
         public IActionResult BuscarUsuario(Usuario user)
         {
-
-            /*if(user != null)
-            {
-
-                List<Usuario> listaUsuarios;
-                user = context.Usuarios.ToList();
-                foreach (Usuario us in user)
-                {
-
-                    listaUsuarios = context.Usuarios.Where(u => u.Documento.Contains(us.Documento)).ToList();
-                    if (listaUsuarios != null)
-                    {
-                        return View(listaUsuarios.SingleOrDefault());
-                    }
-                    else
-                    {
-                        return View();
-                    }
-
-                }
-
-            }
-            else
-            {
-
-                
-
-            }
-            return View*/
-
             var listaUsuarios = context.Usuarios.Where(u => u.Documento.Contains(user.Documento)).ToList();
             if (listaUsuarios != null)
             {
-                return View(listaUsuarios.SingleOrDefault());
+                return View(listaUsuarios);
             }
             else
             {
                 return View();
             }
-
         }
 
         // GET: AdministradorController/Informes
@@ -117,36 +94,28 @@ namespace SGPI.Controllers
             return View();
         }
 
-        // POST: AdministradorController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
         // GET: AdministradorController/Edit/5
-        public ActionResult Edit()
+        public ActionResult Edit(int id)
         {
             ViewBag.tipodoc = context.Documentos.ToList();
             ViewBag.programa = context.Programas.ToList();
             ViewBag.rol = context.Rols.ToList();
             ViewBag.genero = context.Generos.ToList();
-            return View();
+            var listaUsuarios = context.Usuarios.Where(u => u.IdUsuario == id).ToList();
+            if (listaUsuarios != null)
+            {
+                return View(listaUsuarios.SingleOrDefault());
+            }
+            else
+            {
+                return View();
+            }
         }
 
         // POST: AdministradorController/Edit/5
         [HttpPost]
         public IActionResult Edit(Usuario user)
         {
-            //Usuario usuario = context.Usuarios.Find(user.IdUsuario);
             Usuario usuario = user;
             if (usuario == null)
                 return ViewBag.mensaje = "Eror al editar usuario";
@@ -166,7 +135,6 @@ namespace SGPI.Controllers
         // GET: AdministradorController/Delete/5
         public ActionResult Delete(Usuario user)
         {
-
             Usuario usuario = user;
             if (usuario == null)
                 return ViewBag.mensaje = "Eror al editar usuario";
@@ -177,25 +145,6 @@ namespace SGPI.Controllers
             }
 
             return RedirectToAction("BuscarUsuario");
-
         }
-
-        // POST: AdministradorController/Delete/5
-        /*[HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(Usuario user)
-        {
-            //Usuario usuario = context.Usuarios.Find(user.IdUsuario);
-            Usuario usuario = user;
-            if (usuario == null)
-                return ViewBag.mensaje = "Eror al editar usuario";
-            else
-            {
-                context.Remove(user);
-                context.SaveChanges();
-            }
-
-            return RedirectToAction("BuscarUsuario");
-        }*/
     }
 }

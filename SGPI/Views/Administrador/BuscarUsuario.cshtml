@@ -1,6 +1,7 @@
-﻿@model SGPI.Models.Usuario
+﻿@model IEnumerable<SGPI.Models.Usuario>
 @{
     ViewData["Title"] = "BuscarUsuario";
+    int cont = 0;
 }
 
 @*style="background-image:src(../../wwwroot/img/tdea.png); background-size:60%; height: 50%; background-position: center; background-repeat: no-repeat; background-attachment: fixed;">*@
@@ -10,14 +11,14 @@
         <img src="~/img/tdea.png" style="margin-left:750px; width:100px; margin-top:20px" />
     </div>
     <br />
-    <hr style="border-color:black"/>
+    <hr style="border-color:black" />
     <div class="row">
         <form style="margin-left:10px">
             <button class="btn btn-outline-dark" asp-controller="Administrador" asp-action="MenuAdministrador" type="submit">Atras</button>
         </form>
         <form class="form-inline" style="margin-left:770px" method="post">
-            <input asp-for="Documento" class="form-control" type="search" placeholder="Search" value=" ">
-            <input asp-for="Documento" class="btn btn-outline-dark" type="submit" value="Buscar">
+            <input class="form-control" type="search" placeholder="Search" value=" ">
+            <input class="btn btn-outline-dark" type="submit" value="Buscar">
         </form>
     </div>
     <br />
@@ -36,21 +37,30 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">@Html.DisplayFor(modelItem => modelItem.IdUsuario)</th>
-                    <td>@Html.DisplayFor(modelItem => modelItem.Documento)</td>
-                    <td>@Html.DisplayFor(modelItem => modelItem.Nombre)</td>
-                    <td>@Html.DisplayFor(modelItem => modelItem.Apellido)</td>
-                    <td>@Html.DisplayFor(modelItem => modelItem.ProgramaUsuarios)</td>
-                    <td>@Html.DisplayFor(modelItem => modelItem.IdRol)</td>
-                    <td>@Html.DisplayFor(modelItem => modelItem.Direccion)</td>
-                    <td>
-                        <button type="submit" class="btn btn-outline-dark" onclick="@Url.Action("Edit","AdministradorController")"><img src="~/img/editar.png" style="width:25px" /></button>
-                        <button type="submit" class="btn btn-outline-dark"><img src="~/img/eliminar.png" style="width:25px" /></button>
-                        @Html.ActionLink("Edit", "Edit", new { IdUsuario = Model.IdUsuario }, new { })
-                        @Html.ActionLink("Delete", "Delete", new { IdUsuario = Model.IdUsuario }, new { onclick = "return confirm('¿Esta seguro que desea eliminar este usuario?')" })
-                    </td>
-                </tr>                     
+                @foreach (var i in Model)
+                {
+
+                    <tr>
+                        <th scope="row">@Html.DisplayFor(modelItem => i.IdUsuario)</th>
+                        <td>@Html.DisplayFor(modelItem => i.Documento)</td>
+                        <td>@Html.DisplayFor(modelItem => i.Nombre)</td>
+                        <td>@Html.DisplayFor(modelItem => i.Apellido)</td>
+                        <td>@Html.ViewBag.programa[cont]</td>
+                        <td>@Html.DisplayFor(modelItem => i.IdRol)</td>
+                        <td>@Html.DisplayFor(modelItem => i.Direccion)</td>
+                        <td>
+                            <a href='@Url.Action("Edit", "Administrador", new { id = i.IdUsuario })'>
+                                <img src="~/img/editar.png" style="width:25px" />
+                            </a>
+                            <a href='@Url.Action("Delete", "Administrador")'>
+                                <img src='~/img/eliminar.png' style="width:25px" />
+                            </a>
+                        </td>
+                    </tr>
+
+                    cont++;
+
+                }
             </tbody>
         </table>
     </div>

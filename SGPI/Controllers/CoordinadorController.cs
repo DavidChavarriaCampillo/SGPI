@@ -31,7 +31,8 @@ namespace SGPI.Controllers
         {
             Usuario user = new Usuario();
             ViewBag.programa = context.Programas.ToList();
-            return View(user);
+            var listaUsuarios = context.Usuarios.ToList();
+            return View(listaUsuarios);
         }
 
         [HttpPost]
@@ -41,10 +42,11 @@ namespace SGPI.Controllers
             var listaEstudiantes = context.Usuarios.Where(u => u.Documento.Contains(user.Documento) && 
             u.IdRol==3 && u.IdPrograma==user.IdPrograma).ToList();
             ViewBag.programa = context.Programas.ToList();
-            ViewBag.genero = context.Generos.Find(listaEstudiantes[0].IdGenero).ToString();
+            //ViewBag.genero = context.Generos.Find(listaEstudiantes[0].IdGenero).ValGenero;
+            //ViewBag.programaUsuario = context.Programas.Find(listaEstudiantes[0].IdPrograma).ValPrograma;
             if (listaEstudiantes != null)
             {
-                return View(listaEstudiantes.SingleOrDefault());
+                return View(listaEstudiantes);
             }
             else
             {
@@ -69,63 +71,6 @@ namespace SGPI.Controllers
         public ActionResult EntrevistaAdmicion()
         {
             return View();
-        }
-
-        // POST: CoordinadorController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: CoordinadorController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: CoordinadorController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: CoordinadorController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: CoordinadorController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
         }
     }
 }
