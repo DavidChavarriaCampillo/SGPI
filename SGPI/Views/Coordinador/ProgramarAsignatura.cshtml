@@ -1,6 +1,7 @@
-﻿
+﻿@model IEnumerable<SGPI.Models.Programacion>
 @{
     ViewData["Title"] = "ProgramarAsignatura";
+    int cont = 0;
 }
 
 <div class="row">
@@ -9,47 +10,30 @@
 </div>
 <br />
 <hr />
-
 <div class="row">
-
-    <form class="form-inline" style="justify-content:left">
-        <input class="form-control" type="search" placeholder="Documento" aria-label="Search">
-        <button class="btn btn-outline-secondary" type="submit">Search</button>
+    <form class="form-inline" style="margin-left:60px" method="post">
+        <div style="">
+            @Html.DropDownList("IdPrograma", new SelectList(ViewBag.programas, "IdPrograma", "ValPrograma"), "Programa", new { @class = "btn btn-outline-dark dropdown-toggle" })
+        </div>
+        <div style="margin-left:250px" class="row">
+            <label for="start" style="margin-right:6px"><b>Semestre</b></label>
+            <input class="btn btn-outline-dark" type="date" id="start" name="FInicio"
+                    min="2022-01-01">
+        </div>
+        <div>
+            <button type="submit" class="btn btn-outline-dark" style="margin-left: 30px;">Buscar</button>
+        </div>
     </form>
     <form>
-        <select name="color" id="color" class="btn btn-outline-darck" style="border:solid 1px; margin-left: 150px">
-            <option value="#">Programa</option>
-            <option value="r">ESP.TI</option>
-            <option value="a">MG.TI</option>
-            <option value="v">MGRMA</option>
-        </select>
+        <button type="submit" class="btn btn-outline-dark" asp-controller="Coordinador" asp-action="MenuCoordinador" style="margin-left: 300px;">Volver</button>
     </form>
-
-    <form style="margin-left:150px">
-        <label for="start">Semestre</label>
-        <input type="date" id="start" name="trip-start"
-               value="2018-07-22"
-               min="2018-01-01" max="2018-12-31">
-    </form>
-
-    <form>
-        <button type="submit" class="btn btn-outline-dark" asp-controller="Coordinador" asp-action="MenuCoordinador" style="margin-left: 150px;">Volver</button>
-    </form>
-
 </div>
-
 <form class="row" style="margin-top:50px;margin-left:300px">
     <div>
-        <button type="submit" class="btn btn-outline-dark" style="margin-left: 150px;">Añadir</button>
-        <button type="submit" class="btn btn-outline-dark" style="margin-left: 100px;">Guardar</button>
+        <button asp-controller="Coordinador" asp-action="Anadir" type="submit" class="btn btn-outline-dark" style="margin-left: 150px;">Añadir</button>
     </div>
 </form>
-
-
-
 <div class="row" style="margin-top: 50px">
-
-
     <table class="table table-responsive" style="margin-left: 120px; border-color:black;">
         <thead>
             <tr>
@@ -58,95 +42,26 @@
                 <th scope="col">Fecha fin</th>
                 <th scope="col">Bloque</th>
                 <th scope="col">Sala</th>
+                <th scope="col">Programa</th>
                 <th scope="col">Modulo</th>
                 <th scope="col">Codigo asignatura</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>
-                    <input type="date" id="start" name="trip-start"
-                           value="2018-07-22"
-                           min="2018-01-01" max="2018-12-31">
-                </td>
-                <td>
-                    <input type="date" id="start" name="trip-start"
-                           value="2018-07-22"
-                           min="2018-01-01" max="2018-12-31">
-                </td>
-                <td>
-                    <input type="text" style="width:100px"/>
-                </td>
-                <td>
-                    <input type="text" style="width:100px"/>
-                </td>
-                <td>
-                    <select name="color" id="color" class="btn btn-outline-darck" style="border:solid 1px;">
-                        <option value="#">Programa</option>
-                        <option value="r">ESP.TI</option>
-                        <option value="a">MG.TI</option>
-                        <option value="v">MGRMA</option>
-                    </select>
-                </td>
-                <td>15dfd7866as1</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>
-                    <input type="date" id="start" name="trip-start"
-                           value="2018-07-22"
-                           min="2018-01-01" max="2018-12-31">
-                </td>
-                <td>
-                    <input type="date" id="start" name="trip-start"
-                           value="2018-07-22"
-                           min="2018-01-01" max="2018-12-31">
-                </td>
-                <td>
-                    <input type="text" style="width:100px" />
-                </td>
-                <td>
-                    <input type="text" style="width:100px"/>
-                </td>
-                <td>
-                    <select name="color" id="color" class="btn btn-outline-darck" style="border:solid 1px;">
-                        <option value="#">Programa</option>
-                        <option value="r">ESP.TI</option>
-                        <option value="a">MG.TI</option>
-                        <option value="v">MGRMA</option>
-                    </select>
-                </td>
-                <td>15dfd7866as1</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>
-                    <input type="date" id="start" name="trip-start"
-                           value="2018-07-22"
-                           min="2018-01-01" max="2018-12-31">
-                </td>
-                <td>
-                    <input type="date" id="start" name="trip-start"
-                           value="2018-07-22"
-                           min="2018-01-01" max="2018-12-31">
-                </td>
-                <td>
-                    <input type="text" style="width:100px"/>
-                </td>
-                <td>
-                    <input type="text" style="width:100px"/>
-                </td>
-                <td>
-                    <select name="color" id="color" class="btn btn-outline-darck" style="border:solid 1px;">
-                        <option value="#">Programa</option>
-                        <option value="r">ESP.TI</option>
-                        <option value="a">MG.TI</option>
-                        <option value="v">MGRMA</option>
-                    </select>
-                </td>
-                <td>15dfd7866as1</td>
-            </tr>
+            @foreach (var i in Model)
+            {
+                <tr>
+                    <th scope="row">@Html.DisplayFor(modelItem => i.IdProgramacion)</th>
+                    <td>@Html.ViewBag.fechaInicio[cont]</td>
+                    <td>@Html.ViewBag.fechaFin[cont]</td>
+                    <td>@Html.DisplayFor(modelItem => i.Bloque)</td>
+                    <td>@Html.DisplayFor(modelItem => i.Salon)</td>
+                    <td>@Html.ViewBag.programa[cont]</td>
+                    <td>@Html.DisplayFor(modelItem => i.Bloque)</td>
+                </tr>
+                cont++;
+            }
+        </tbody> 
     </table>
 </div>
 

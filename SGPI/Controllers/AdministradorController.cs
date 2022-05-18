@@ -43,7 +43,7 @@ namespace SGPI.Controllers
             ViewBag.programa = context.Programas.ToList();
             ViewBag.rol = context.Rols.ToList();
             ViewBag.genero = context.Generos.ToList();
-            return View();
+            return RedirectToAction("CrearUsuario");
         }
 
         // GET: AdministradorController/BuscarUsuario
@@ -75,9 +75,30 @@ namespace SGPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult BuscarUsuario(Usuario user)
+        public IActionResult BuscarUsuario(string documento)
         {
-            var listaUsuarios = context.Usuarios.Where(u => u.Documento.Contains(user.Documento)).ToList();
+            var listaUsuarios = context.Usuarios.Where(u => u.Documento.Contains(documento)).ToList();
+            var listaprogram = context.Programas.ToList();
+            List<string> listaprogramas = new List<string>();
+            foreach (var user in listaUsuarios)
+            {
+                if (user.IdPrograma != null)
+                {
+                    foreach (var programa in listaprogram)
+                    {
+                        if (user.IdPrograma == programa.IdPrograma)
+                        {
+                            listaprogramas.Add(programa.ValPrograma);
+                        }
+                    }
+                }
+                else
+                {
+                    listaprogramas.Add("no programa");
+                }
+
+            }
+            ViewBag.programa = listaprogramas;
             if (listaUsuarios != null)
             {
                 return View(listaUsuarios);
@@ -114,13 +135,14 @@ namespace SGPI.Controllers
 
         // POST: AdministradorController/Edit/5
         [HttpPost]
-        public IActionResult Edit(Usuario user)
+        public IActionResult Edit(Usuario user, int id)
         {
             Usuario usuario = user;
             if (usuario == null)
                 return ViewBag.mensaje = "Eror al editar usuario";
             else
             {
+                user.IdUsuario = id;
                 context.Update(user);
                 context.SaveChanges();
                 ViewBag.tipodoc = context.Documentos.ToList();
@@ -133,13 +155,14 @@ namespace SGPI.Controllers
         }
 
         // GET: AdministradorController/Delete/5
-        public ActionResult Delete(Usuario user)
+        public ActionResult Delete(Usuario user, int id)
         {
             Usuario usuario = user;
             if (usuario == null)
                 return ViewBag.mensaje = "Eror al editar usuario";
             else
             {
+                user.IdUsuario = id;
                 context.Remove(user);
                 context.SaveChanges();
             }

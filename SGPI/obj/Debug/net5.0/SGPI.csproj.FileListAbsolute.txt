@@ -641,3 +641,4 @@ C:\Users\SrTonyChop\Desktop\Nueva carpeta (2)\SGPI\SGPI\obj\Debug\net5.0\SGPI.dl
 C:\Users\SrTonyChop\Desktop\Nueva carpeta (2)\SGPI\SGPI\obj\Debug\net5.0\ref\SGPI.dll
 C:\Users\SrTonyChop\Desktop\Nueva carpeta (2)\SGPI\SGPI\obj\Debug\net5.0\SGPI.pdb
 C:\Users\SrTonyChop\Desktop\Nueva carpeta (2)\SGPI\SGPI\obj\Debug\net5.0\SGPI.genruntimeconfig.cache
+C:\Users\SrTonyChop\Desktop\Nueva carpeta (2)\SGPI\SGPI\obj\Debug\net5.0\Razor\Views\Coordinador\Anadir.cshtml.g.cs
