@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SGPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +10,15 @@ namespace SGPI.Controllers
 {
     public class EstudianteController : Controller
     {
+        SGPDBContext context;
+
+        public EstudianteController(SGPDBContext contexto)
+        {
+            context = contexto;
+        }
+
         // GET: EstudianteController
-        public ActionResult MenuEstudiante()
+        public ActionResult MenuEstudiante(int id)
         {
             return View();
         }

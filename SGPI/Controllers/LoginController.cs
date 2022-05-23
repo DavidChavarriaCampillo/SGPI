@@ -1,18 +1,58 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SGPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace SGPI.Controllers
 {
     public class LoginController : Controller
     {
+        SGPDBContext context;
+
+        public LoginController(SGPDBContext contexto)
+        {
+            context = contexto;
+        }
+
         // GET: LoginController
         public ActionResult Login()
         {
-            return View();
+            bool mensaje = false;
+            return View(mensaje);
+        }
+
+        [HttpPost]
+        public ActionResult Login(string documento,string contracena)
+        {
+            var usuario = context.Usuarios.Where(u => u.Documento == documento && u.Contraseña == contracena).ToList();
+            try
+            {
+                if (usuario[0].IdRol == 1)
+                {
+                    return Redirect("/Administrador/MenuAdministrador");
+                }
+                else if (usuario[0].IdRol == 2)
+                {
+                    return Redirect("/Coordinador/MenuCoordinador");
+                }
+                else if (usuario[0].IdRol == 3)
+                {
+                    return Redirect("/Estudiante/MenuEstudiante");
+                }
+                else
+                {
+                    return View();
+                }
+            }
+            catch(Exception e)
+            {
+                return View();
+            }
+            
         }
 
         // GET: LoginController/Details/5
